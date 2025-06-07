@@ -3,7 +3,7 @@ import axios from "axios";
 import { Producto, PrecioEspecial } from "../types";
 import { get } from "http";
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = 'https://desafio-backend-drenvio.onrender.com/api';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
