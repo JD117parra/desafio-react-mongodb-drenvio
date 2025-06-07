@@ -7,7 +7,7 @@ const Articulos: React.FC = () => {
   const [preciosEspeciales, setPreciosEspeciales] = useState<PrecioEspecial[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [usuarioActual, setUsuarioActual] = useState<string>('user123');
+  const [usuarioActual, setUsuarioActual] = useState<string>('admin');
 
   useEffect(() => {
     cargarDatos();
@@ -41,6 +41,11 @@ const Articulos: React.FC = () => {
       setLoading(false);
     }
   };
+
+  const obtenerNombreUsuario = (): string => {
+    const usuarioConPrecio = preciosEspeciales.find(pe => pe.userId === usuarioActual);
+    return usuarioConPrecio?.userName || 'Usuario no encontrado';
+  }
 
   // Función segura para obtener el precio
   const obtenerPrecio = (producto: any): number => {
@@ -137,8 +142,13 @@ const Articulos: React.FC = () => {
   return (
     <div className="articulos-container">
       <h2>Lista de Artículos</h2>
-      <p className="usuario-info">Usuario actual: <strong>{usuarioActual}</strong></p>
-      
+      <p className="usuario-info">
+      Usuario actual: <strong>{usuarioActual}</strong>
+      {preciosEspeciales.some(pe => pe.userId === usuarioActual) && (
+      <span> ({preciosEspeciales.find(pe => pe.userId === usuarioActual)?.userName || 'Sin nombre'})</span>
+      )}
+      </p>      
+
       <div style={{marginBottom: '1rem', color: '#6b7280'}}>
         📊 Total de productos: <strong>{productos.length}</strong> | 
         🏷️ Precios especiales: <strong>{preciosEspeciales.length}</strong>

@@ -127,7 +127,7 @@ const Subida: React.FC = () => {
             value={formData.userId}
             onChange={handleInputChange}
             required
-            placeholder="Ej: user123"
+            placeholder="Ej: admin"
           />
           <small style={{color: '#6b7280'}}>Identificador único del usuario</small>
         </div>
