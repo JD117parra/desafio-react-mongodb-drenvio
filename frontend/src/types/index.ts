@@ -8,8 +8,13 @@ export interface Producto {
     brand?: string;
     sku: string;
     tags?: string[];
-    createdAt: string;
-    updatedAt: string;
+    createdAt?: string;
+    updatedAt?: string;
+
+    nombre?: string;
+    precio?:number;
+    categoria?: string;
+    marca?: string;
 }
 
 export interface PrecioEspecial {
